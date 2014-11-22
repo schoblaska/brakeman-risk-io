@@ -1,4 +1,4 @@
-brakeman_risk_io is a small script which will use brakeman to scan a Rails application for vulnerabilities and send the results to Risk I/O, converting brakeman warning types to the correct WASC ID where possible.
+brakeman_risk_io is a small script which will use [brakeman](http://brakemanscanner.org/) to scan a Rails application for vulnerabilities and send the results to [Risk I/O](https://www.risk.io/), converting [brakeman warning types](http://brakemanscanner.org/docs/warning_types/) to the correct [WASC ID](http://projects.webappsec.org/w/page/13246975/Threat-Classification-Taxonomy-Cross-Reference-View) where possible.
 
 Installation
 ============
