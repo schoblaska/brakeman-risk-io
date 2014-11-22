@@ -1,0 +1,40 @@
+#!/usr/bin/env ruby
+
+require "rubygems"
+require "brakeman"
+require "httparty"
+require "csv"
+require "json"
+
+raise("Enviroment variable RISK_IO_API_KEY not set") if ENV["RISK_IO_API_KEY"].nil?
+
+wasc_mappings = {}
+
+CSV.foreach("wasc.csv") do |row|
+  wasc_mappings[row[0]] = row[1]
+end
+
+uri = "https://api.risk.io/vulnerabilities"
+headers = {"X-Risk-Token" => ENV["RISK_IO_API_KEY"], "Content-type" => "application/json", "Accept" => "application/json"}
+
+tracker = Brakeman.run(ARGV[0])
+
+tracker.checks.warnings.each do |warning|
+  wasc_id = wasc_mappings[warning.warning_type] || "WASC-15"
+
+  payload = {
+    vulnerability: {
+      wasc_id: wasc_id,
+      primary_locator: "hostname",
+      hostname: "#{tracker.app_path.split("/").last}-brakeman"
+    }
+  }
+
+  HTTParty.post(uri, body: payload.to_json, headers: headers)
+
+  print "."
+end
+
+count = tracker.checks.warnings.count
+
+puts "\nSent #{count == 1 ? "1 warning" : "#{count} warnings"} to Risk I/O"

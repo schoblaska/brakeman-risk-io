@@ -1,0 +1,28 @@
+Attribute Restriction,WASC-20
+Authentication,WASC-01
+Basic Authentication,WASC-01
+Command Injection,WASC-36
+Cross Site Scripting (Content Tag),WASC-08
+Cross Site Scripting (JSON),WASC-08
+Cross Site Scripting,WASC-08
+Cross-Site Request Forgery,WASC-09
+Dangerous Eval,WASC-36
+Dangerous Send,WASC-36
+Default Routes,WASC-15
+Denial of Service,WASC-10
+Dynamic Render Paths,WASC-15
+File Access,WASC-17
+Format Validation,WASC-15
+Information Disclosure,WASC-13
+Mail Link,WASC-08
+Mass Assignment,WASC-36
+Redirect,WASC-38
+Remote Code Execution,WASC-36
+Remote Execution in YAML.load,WASC-36
+Response Splitting,WASC-25
+SQL Injection,WASC-19
+SSL Verification Bypass,WASC-15
+Session Settings,WASC-15
+Unsafe Deserialization,WASC-36
+Unsafe Redirects,WASC-38
+Unscoped Find,WASC-13
